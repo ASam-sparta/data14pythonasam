@@ -43,10 +43,35 @@
 # print(f"{a}, {b}, {c}, {d}")
 
 # Name, age, number of sibling, favourite decimal number, favourite animal
-name = str(input("What is your name?\n"))
-age = int(input("How old are you?\n"))
-num_sib = input("How many siblings do you have?\n")
-fav_dec = float(input("What is your favourite decimal number?\n"))
-fav_ani = input("What is your favourite animal?\n")
-print(f"Hello, your name is {name} and you are {age} years old. "
-      f"You have {num_sib} siblings and you favourite decimal is {fav_dec}. Finally, your favourite animal is a {fav_ani}!")
+# name = str(input("What is your name?\n"))
+# age = int(input("How old are you?\n")) #casting
+# num_sib = int(input("How many siblings do you have?\n"))
+# fav_dec = float(input("What is your favourite decimal number?\n"))
+# fav_ani = str(input("What is your favourite animal?\n"))
+#
+# print(f"Hello, your name is {name} and you are {age} years old. "
+#       f"You have {num_sib} siblings and you favourite decimal is {fav_dec}. "
+#       f"Finally, your favourite animal is a {fav_ani}!")
+
+#BOOLEAN
+#TRUE IS GREATER THAN FALSE
+
+# .isalpha()
+# .islower()
+# .isupper()
+# .endwith(x)
+# .startswith(X)
+
+# a = "Hello World!"
+# print(a.isalpha())
+# print(a.islower())
+# print(a.isupper())
+# print(a.endswith("!"))
+# print(a.startswith("H"))
+
+# False is equivalent to 0, True is equivalent to 1
+
+n = None
+print(bool(n))
+print(None is None)
+print(None == None)
