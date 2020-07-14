@@ -37,11 +37,15 @@ def get_user_guess():
 
 
 def get_user_difficulty():
-    user_input = number_check("Please choose a difficulty!  1 = Easy, 2 = Medium, 3 = Hard\n")
-    return user_input
+    while True:
+        user_input = number_check("Please choose a difficulty!  1 = Easy, 2 = Medium, 3 = Hard\n")
+        if user_input not in [1, 2, 3]:
+            print("Please enter an appropriate difficulty!\n")
+        else:
+            return user_input
+
 
 # Set - Return True of False depending on if the user wants to play again
-
 
 def play_again():
     user_play_again = letter_check("Would you like to play again? Y/N\n").upper()
