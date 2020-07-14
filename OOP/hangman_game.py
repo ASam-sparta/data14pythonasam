@@ -48,12 +48,14 @@ def get_user_difficulty():
 # Set - Return True of False depending on if the user wants to play again
 
 def play_again():
-    user_play_again = letter_check("Would you like to play again? Y/N\n").upper()
-    if user_play_again == "Y":
-        return True
-    elif user_play_again == "N":
-        return False
-
+    while True:
+        user_play_again = letter_check("Would you like to play again? Y/N\n").upper()
+        if user_play_again == "Y":
+            return True
+        elif user_play_again == "N":
+            return False
+        else:
+            print("Please enter Y or N!")
 
 class Game:
 
@@ -157,4 +159,5 @@ class Game:
                 print(f"Uh oh, looks like you ran out of lives! The word was {self.hangman_word.word} !")
             if not play_again():
                 self.game_run = True
+                print("THANK YOU FOR PLAYING! SEE YOU NEXT TIME!")
 
