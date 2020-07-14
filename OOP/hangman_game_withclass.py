@@ -1,6 +1,10 @@
 from hangman_brain import Word
+from hangman_diagrams import hangman_diagrams
 
-
+# difficulty
+# time limit
+# hangman thing
+#
 # Check if input is a letter
 
 
@@ -21,7 +25,9 @@ def number_check(prompt):
     is_a_number = False
     while not is_a_number:
         user = input(prompt)
-        if user.isnumeric():
+        if user == "0":
+            print("Don't be silly, pick a number greater than 0!")
+        elif user.isnumeric():
             user = int(user)
             return user
         else:
@@ -50,7 +56,7 @@ class Game:
         self.hangman_word = Word()
         self.guess = ('_' * self.hangman_word.length)
         self.entered_letters = []
-        self.lives_left = 0
+        self.lives_left = 6
         self.game_run = False
         self.run()
 
@@ -94,6 +100,7 @@ class Game:
         elif user_input not in self.hangman_word.word and user_input not in self.entered_letters:
             self.entered_letters.append(user_input)
             self.lives_left -= 1
+            print(hangman_diagrams[6-self.lives_left])
             print(f"{user_input} is not in the word. You have {self.lives_left} lives left!")
 
         elif user_input not in self.hangman_word.word and user_input in self.entered_letters:
@@ -110,7 +117,7 @@ class Game:
     def run(self):
         while not self.game_run:
             print(f"{self.greeting}")
-            self.lives_left = number_check("How many lives would you like?\n")
+            # self.lives_left = number_check("How many lives would you like?\n")
             self.reset_game()
             print(self.hangman_word.word)
             print(self.guess)
