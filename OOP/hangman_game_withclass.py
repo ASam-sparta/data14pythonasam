@@ -77,7 +77,6 @@ class Game:
         if self.guess == self.hangman_word.word:
             print("Congratulations you guessed the word!!!")
             print(self.hangman_word.word)
-            play_again()
             return True
         return False
 
@@ -113,13 +112,14 @@ class Game:
             print(f"{self.greeting}")
             self.lives_left = number_check("How many lives would you like?\n")
             self.reset_game()
-            # print(self.hangman_word.word)
+            print(self.hangman_word.word)
             print(self.guess)
-            while self.lives_left != 0 or self.is_correct_word():
+            while self.lives_left != 0 and not self.is_correct_word():
                 self.handle_user_input(get_user_guess())
                 print(f"You have currently guessed {sorted(self.entered_letters)}")
                 print(self.guess)
-            print("Uh oh, looks like you ran out of lives!")
+            if self.lives_left == 0:
+                print("Uh oh, looks like you ran out of lives!")
             if not play_again():
                 self.game_run = True
 
