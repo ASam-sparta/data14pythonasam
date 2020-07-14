@@ -39,6 +39,9 @@ def get_user_guess():
     user_input = letter_check("Guess a letter!\n").upper()
     return user_input
 
+def get_user_difficulty():
+    user_input = number_check("Please choose a difficulty!  1 = Easy, 2 = Medium, 3 = Hard\n")
+    return user_input
 
 # Set - Return True of False depending on if the user wants to play again
 def play_again():
@@ -53,12 +56,18 @@ class Game:
 
     def __init__(self):
         self.greeting = "Welcome to Hangman... good luck!"
-        self.hangman_word = Word()
-        self.guess = ('_' * self.hangman_word.length)
+        self.hangman_word = None
+        self.guess = None
         self.entered_letters = []
         self.lives_left = 6
         self.game_run = False
         self.run()
+
+    def reset_game(self):
+        self.entered_letters = []
+        self.hangman_word = Word(get_user_difficulty())
+        self.guess = ('_' * self.hangman_word.length)
+        self.lives_left = 6
 
     # Setter: Changing the characters in self.guess with the provided replacement_letter
     #         at the specific indexes in the index_list
@@ -108,11 +117,6 @@ class Game:
 
         else:
             print("Please enter a letter")
-
-    def reset_game(self):
-        self.entered_letters = []
-        self.hangman_word = Word()
-        self.guess = ('_' * self.hangman_word.length)
 
     def run(self):
         while not self.game_run:
