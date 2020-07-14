@@ -40,7 +40,6 @@ class Game:
         self.guess = ('_' * self.hangman_word.length)
         self.entered_letters = []
         self.lives_left = 0
-        self.active_game = True
         self.game_run = False
         self.run()
 # Setter: Changing the characters in self.guess with the provided replacement_letter
@@ -78,9 +77,7 @@ class Game:
             self.entered_letters = []
             self.hangman_word = Word()
             self.guess = ('_' * self.hangman_word.length)
-            self.active_game = False
         elif user_play_again == "N":
-            self.active_game = False
             self.game_run = True
 
     def handle_user_input(self, user_input):
@@ -105,15 +102,12 @@ class Game:
         while not self.game_run:
             print("You have decided to play hangman... good luck!")
             self.lives_left = number_check("How many lives would you like?\n")
+
             # print(self.hangman_word.word)
             print(self.guess)
-            self.active_game = True # This is set to false in the play_again method and this resets the flag so that the game can begin
-            while self.active_game:
-                if self.lives_left == 0:
-                    print("Uh oh, looks like you ran out of lives!")
-                    self.play_again()
-                else:
-                    while self.lives_left != 0 or self.correct_word():
-                        self.handle_user_input(get_user_guess())
-                        print(f"You have currently guessed {sorted(self.entered_letters)}")
-                        print(self.guess)
+            while self.lives_left != 0 or self.correct_word():
+                self.handle_user_input(get_user_guess())
+                print(f"You have currently guessed {sorted(self.entered_letters)}")
+                print(self.guess)
+            print("Uh oh, looks like you ran out of lives!")
+            self.play_again()
