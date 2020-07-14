@@ -26,6 +26,12 @@ def number_check(prompt):
             print("Please enter a valid number!")
 
 
+# Takes guess from user
+def get_user_guess():
+    user_input = letter_check("Guess a letter!\n").upper()
+    return user_input
+
+
 class Game:
 
     def __init__(self):
@@ -45,18 +51,6 @@ class Game:
             if i in index_list:
                 self.guess = self.guess[:i] + replacement_letter + self.guess[i + 1:]
 
-    def guess_correct_word(self):
-        if self.guess == self.hangman_word.word:
-            print("Congratulations you guessed the word!!!")
-            print(self.hangman_word.word)
-
-
-# Takes guess from user
-    def user_guess(self):
-        user_input = letter_check("Guess a letter!\n").upper()
-        return user_input
-
-
 # Set self.guess to a new string
     def update_guess(self, user_input):
         for letter in self.hangman_word.word:
@@ -67,7 +61,7 @@ class Game:
                 # Calls a method from within the class to change letters in self_guess
                 self.reveal_letters(indexes, letter)
 
-# Correct word
+# Returns True of False depending if the complete guessed word is correct
     def correct_word(self):
         if self.guess == self.hangman_word.word:
             print("Congratulations you guessed the word!!!")
@@ -84,7 +78,7 @@ class Game:
             self.entered_letters = []
             self.hangman_word = Word()
             self.guess = ('_' * self.hangman_word.length)
-            self.run()
+            self.active_game = False
         elif user_play_again == "N":
             self.active_game = False
             self.game_run = True
@@ -111,14 +105,15 @@ class Game:
         while not self.game_run:
             print("You have decided to play hangman... good luck!")
             self.lives_left = number_check("How many lives would you like?\n")
-            print(self.hangman_word.word)
+            # print(self.hangman_word.word)
             print(self.guess)
+            self.active_game = True # This is set to false in the play_again method and this resets the flag so that the game can begin
             while self.active_game:
                 if self.lives_left == 0:
                     print("Uh oh, looks like you ran out of lives!")
                     self.play_again()
                 else:
                     while self.lives_left != 0 or self.correct_word():
-                        self.handle_user_input(self.user_guess())
+                        self.handle_user_input(get_user_guess())
                         print(f"You have currently guessed {sorted(self.entered_letters)}")
                         print(self.guess)
