@@ -12,8 +12,8 @@ class Word:
         self.dict = {1: self.easy, 2: self.medium, 3: self.hard}
         self.word = self.generate_word()
         self.length = len(self.word)
-# Getter: Returns a list of indexes where "letter_to_find" is found in self.word
-    # - self.word is a property of the current object
+
+# Returns a list of indexes where all instances of a letter is found in the word
 
     def get_index_of_letter(self, letter_to_find):
         indexes = []
@@ -23,6 +23,7 @@ class Word:
                 indexes.append(index_search)
         return indexes
 
+# This keeps picking a word randomly, until one of the correct length is chosen
     def generate_word(self):
         picked_word = choice(word_list)
         while len(picked_word) not in self.dict[self.difficulty]:
