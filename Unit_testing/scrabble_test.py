@@ -49,6 +49,11 @@ class Scrabbletest(unittest.TestCase):
         self.assertTrue(self._is_list_isalpha(self.game.replace_tiles([])))
         self.assertEqual(len(self.game.replace_tiles(replaced_tiles)), 7)
 
+    # def test_calculate_best_word(self):
+
+    def test_shuffle_hand(self):
+        self.assertTrue(self.game.shuffle_hand(["A", "B", "C", "D", "E", "F", "G"]))
+
 
 # if word is in generate tile hand,
 # if the word exists

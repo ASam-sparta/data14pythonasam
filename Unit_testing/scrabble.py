@@ -1,4 +1,4 @@
-# import random
+import random
 from random import choice
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 scores_dict = {'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3,
@@ -31,3 +31,10 @@ class ScrabbleGame():
         if len(tile_hand_input) != 7:
             tile_hand_input.append(choice(alphabet))
         return tile_hand_input
+
+    def shuffle_hand(self, current_hand):
+        shuffled_hand = random.sample(current_hand, len(current_hand))
+        return current_hand != shuffled_hand
+
+# game = ScrabbleGame()
+# print(game.shuffle_hand(["A", "B", "C", "D", "E", "F", "G"]))
