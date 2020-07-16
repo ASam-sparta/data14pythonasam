@@ -13,6 +13,11 @@ class Word:
         self.word = self.generate_word()
         self.length = len(self.word)
 
+
+## Getter for word
+    def get_word(self):
+        return self.word
+
 # Returns a list of indexes where all instances of a letter is found in the word
 
     def get_index_of_letter(self, letter_to_find):
