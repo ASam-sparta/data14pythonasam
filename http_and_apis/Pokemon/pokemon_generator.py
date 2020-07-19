@@ -17,7 +17,6 @@ class SinglePokemon:
         self.level = 100
         self.moveset()
         self.stats()
-
     def pokemon_response(self):
         return Pokemon(self.response_json)
 
@@ -34,18 +33,36 @@ class SinglePokemon:
         return f"HP: {hp} \nATK: {attack} \nDEF: {defense} \nSP.ATK: {special_attack} " \
                f"\nSP.DEF: {special_defense} \nSPD: {speed}"
 
+
+    def move_generator_function(self):
+        while True:
+            move1 = choice(Pokemon(self.response_json).moves)['move']
+            move1_name = (move1['name']).capitalize()
+            move1_address = move1['url']
+            request = requests.get(move1_address)
+            response_json = request.json()
+            testing = PokemonMoves(response_json)
+            if testing.power is not None:
+                return {'name': move1_name.capitalize(), 'type': testing.type['name'], 'pp': testing.pp, 'power': testing.power,
+                        'damage_class': testing.damage_class['name'], 'accuracy': testing.accuracy}
+
     def moveset(self):
-        move1 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
-        move2 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
-        move3 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
-        move4 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
-        return f"{move1} \n{move2} \n{move3} \n{move4}"
+        move_list = [self.move_generator_function()]
+        name_list = [move_list[0]['name']]
+        x = 0
+        while x < 3:
+            move = self.move_generator_function()
+            for i in range(len(move_list)):
+                if move['name'] not in name_list:
+                    move_list.append(move)
+                    name_list.append(move['name'])
+            x += 1
+        return move_list
 
-    def move1(self):
-        address =
-pokemon_ditto = SinglePokemon("rayquaza")
 
-pprint(pokemon_ditto.response_json)
+pokemon_ditto = SinglePokemon("dialga")
+
+pprint(pokemon_ditto.moveset())
 
 # Randomly generate moves for the pokemon based on what they can learn - done
 # Make a pokemon team class
