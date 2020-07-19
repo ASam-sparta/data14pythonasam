@@ -15,33 +15,37 @@ class SinglePokemon:
         self.header_details = self.request.headers
         self.response_json = self.request.json()
         self.level = 100
-        self.hp = 110 + 2 * Pokemon(self.response_json).hp
-        self.attack = 5 + 2 * Pokemon(self.response_json).attack
-        self.defense = 5 + 2 * Pokemon(self.response_json).defense
-        self.special_attack = 5 + 2 * Pokemon(self.response_json).special_attack
-        self.special_defense = 5 + 2 * Pokemon(self.response_json).special_defense
-        self.speed = 5 + 2 * Pokemon(self.response_json).speed
-        self.move1 = choice(Pokemon(self.response_json).moves)['move']['name']
-        self.move2 = choice(Pokemon(self.response_json).moves)['move']['name']
-        self.move3 = choice(Pokemon(self.response_json).moves)['move']['name']
-        self.move4 = choice(Pokemon(self.response_json).moves)['move']['name']
+        self.moveset()
+        self.stats()
 
     def pokemon_response(self):
         return Pokemon(self.response_json)
 
-    def pokemon_move_response(self):
-        return PokemonMoves()
+    # def pokemon_move_response(self):
+    #     return PokemonMoves(https://pokeapi.co/api/v2/move/144/)
 
     def stats(self):
-        return f"HP: {self.hp} \nATK: {self.attack} \nDEF: {self.defense} \nSP.ATK: {self.special_attack} " \
-               f"\nSP.DEF: {self.special_defense} \nSPD: {self.speed}"
+        hp = 110 + 2 * Pokemon(self.response_json).hp
+        attack = 5 + 2 * Pokemon(self.response_json).attack
+        defense = 5 + 2 * Pokemon(self.response_json).defense
+        special_attack = 5 + 2 * Pokemon(self.response_json).special_attack
+        special_defense = 5 + 2 * Pokemon(self.response_json).special_defense
+        speed = 5 + 2 * Pokemon(self.response_json).speed
+        return f"HP: {hp} \nATK: {attack} \nDEF: {defense} \nSP.ATK: {special_attack} " \
+               f"\nSP.DEF: {special_defense} \nSPD: {speed}"
 
     def moveset(self):
-        return
+        move1 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
+        move2 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
+        move3 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
+        move4 = (choice(Pokemon(self.response_json).moves)['move']['name']).capitalize()
+        return f"{move1} \n{move2} \n{move3} \n{move4}"
 
+    def move1(self):
+        address =
 pokemon_ditto = SinglePokemon("rayquaza")
 
-pprint(pokemon_ditto.move1.move2.move3.move4)
+pprint(pokemon_ditto.response_json)
 
 # Randomly generate moves for the pokemon based on what they can learn - done
 # Make a pokemon team class
