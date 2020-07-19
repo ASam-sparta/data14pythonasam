@@ -20,10 +20,14 @@ class Pokemon:
         self.species = pokemon_json['species']
         self.sprites = pokemon_json['sprites']
         self.stats = pokemon_json['stats']
+        self.hp = self.stats[0]['base_stat']
+        self.attack = self.stats[1]['base_stat']
+        self.defense = self.stats[2]['base_stat']
+        self.special_attack = self.stats[3]['base_stat']
+        self.special_defense = self.stats[4]['base_stat']
+        self.speed = self.stats[5]['base_stat']
         self.types = pokemon_json['types']
         self.weight = pokemon_json['weight']
-    def ability(self):
-        return "abc"
 
 
 url = "https://pokeapi.co/api/v2/pokemon/ditto"
