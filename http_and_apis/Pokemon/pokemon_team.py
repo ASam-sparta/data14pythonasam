@@ -4,6 +4,7 @@ from Pokemon.pokemon_moves import PokemonMoves
 from pprint import pprint
 from random import randint
 
+#This class generates a random team of pokemon with random moves, to be used in a pokemon battle
 class PokemonTeam:
 
     def __init__(self):
@@ -43,4 +44,3 @@ class PokemonTeam:
 
 pk_team = PokemonTeam()
 print(f"Your randomly generated team is {pk_team.pokemon_team} !")
-print(pk_team.pok1().stats())

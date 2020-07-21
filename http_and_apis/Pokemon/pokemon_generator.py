@@ -2,8 +2,6 @@ import requests
 from Pokemon.pokemon_model import Pokemon
 from Pokemon.pokemon_moves import PokemonMoves
 from random import choice
-from pprint import pprint
-# from config_manager import base_url
 
 
 # This model processes the data, i.e. retrieves all the information from API
@@ -17,13 +15,12 @@ class SinglePokemon:
         self.level = 100
         self.moveset()
         self.stats()
+
     def pokemon_response(self):
         return Pokemon(self.response_json)
 
-    # def pokemon_move_response(self):
-    #     return PokemonMoves(https://pokeapi.co/api/v2/move/144/)
-
     def stats(self):
+# This shows all the stats for a single pokemon
         hp = 110 + 2 * Pokemon(self.response_json).hp
         attack = 5 + 2 * Pokemon(self.response_json).attack
         defense = 5 + 2 * Pokemon(self.response_json).defense
@@ -35,6 +32,7 @@ class SinglePokemon:
 
 
     def move_generator_function(self):
+# This generates a random move that the pokemon can learn and all its relative attributes needed for a pokemon battle
         while True:
             move1 = choice(Pokemon(self.response_json).moves)['move']
             move1_name = (move1['name']).capitalize()
@@ -47,6 +45,7 @@ class SinglePokemon:
                         'damage_class': testing.damage_class['name'], 'accuracy': testing.accuracy}
 
     def moveset(self):
+# This returns a list of moves that are unique
         move_list = [self.move_generator_function()]
         name_list = [move_list[0]['name']]
         x = 0
@@ -60,9 +59,9 @@ class SinglePokemon:
         return move_list
 
 
-pokemon_ditto = SinglePokemon("dialga")
-
-pprint(pokemon_ditto.moveset())
+# pokemon_ditto = SinglePokemon("dialga")
+#
+# pprint(pokemon_ditto.moveset())
 
 # Randomly generate moves for the pokemon based on what they can learn - done
 # Make a pokemon team class
