@@ -1,0 +1,13 @@
+{
+  "title": "The Godfather",
+  "length_in_min": 178,
+  "release_year": "24/08/1972",
+  "cast": {
+    "Marlon Brando": "Vito Corleone",
+    "Al Pacino": "Michael Corleone",
+    "Robert Duvall": "Tom Hagen"
+  },
+  "genre": ["Crime film", "Mafia"],
+  "screenplay": ["Mario Puzo", "Francis Ford Coppola"],
+  "music_by": "Nino Rota"
+}

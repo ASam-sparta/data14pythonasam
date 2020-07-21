@@ -49,6 +49,8 @@ def return_mean(list_of_data):
         column_averages[index].append(mean)
     return column_averages
 
+
+
 def mean_to_new_file(list_of_data, averages):
     average_list = [[list_of_data[0], averages[0]], [list_of_data[1], averages[1]], [list_of_data[2], averages[2]],
                     [list_of_data[3], averages[3]]]

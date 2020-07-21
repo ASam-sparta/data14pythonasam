@@ -1,6 +1,6 @@
-from Pokemon.pokemon_generator import SinglePokemon
-from Pokemon.pokemon_model import Pokemon
-from Pokemon.pokemon_moves import PokemonMoves
+from pokemon_generator import SinglePokemon
+from pokemon_model import Pokemon
+from pokemon_moves import PokemonMoves
 from pprint import pprint
 from random import randint
 

@@ -7,19 +7,21 @@
 #     for colour in favourite_colours:
 #         print(colour, item)
 #
-# dict_data = {
-#     1: {"name": "Alex", "animal": "all dogs"},
-#     2: {"name": "Ben", "animal": "flamingo"},
-#     3: {"name": "Evie", "animal": "gorilla"},
-#     4: {"name": "Charlotte", "animal": "giraffe"}
-# }
+dict_data = {
+    1: {"name": "Alex", "animal": "all dogs"},
+    2: {"name": "Ben", "animal": "flamingo"},
+    3: {"name": "Evie", "animal": "gorilla"},
+    4: {"name": "Charlotte", "animal": "giraffe"}
+}
+
+for key in dict_data:
+    string = ""
+    for inner_key in dict_data[key]:
+        string += (dict_data[key][inner_key])
+    print(string)
 #
-# for key in dict_data:
-#     for inner_key in dict_data[key]:
-#         print(dict_data[key][inner_key])
-#
-# for key in dict_data:
-#     print(f"{dict_data[key]['name']}'s favourite animal is {dict_data[key]['animal']}")
+for key in dict_data:
+    print(f"{dict_data[key]['name']}'s favourite animal is {dict_data[key]['animal']}")
 
 # CHINESE MENU
 chinese_menu = {

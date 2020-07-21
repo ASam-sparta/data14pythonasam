@@ -1,6 +1,6 @@
 import requests
-from Pokemon.pokemon_model import Pokemon
-from Pokemon.pokemon_moves import PokemonMoves
+from pokemon_model import Pokemon
+from pokemon_moves import PokemonMoves
 from random import choice
 
 
