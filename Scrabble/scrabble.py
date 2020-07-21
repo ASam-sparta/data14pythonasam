@@ -11,7 +11,7 @@ class ScrabbleGame():
         self.scrabble_pool = {'A': 9, 'B': 2, 'C': 2, 'D': 4, 'E': 12, 'F': 2, 'G': 3, 'H': 2, 'I': 9, 'J': 1, 'K': 1,
                               'L': 4, 'M': 2, 'N': 6, 'O': 8, 'P': 2, 'Q': 1, 'R': 6, 'S': 4, 'T': 6, 'U': 4, 'V': 2,
                               'W': 2, 'X': 1, 'Y': 2,'Z': 1}
-
+        self.current_hand = []
     def calculate_score(self, word):
         word_score = 0
         if word.isalpha():
@@ -39,8 +39,30 @@ class ScrabbleGame():
 
     def shuffle_hand(self, current_hand):
         shuffled_hand = random.sample(current_hand, len(current_hand))
-        return current_hand != shuffled_hand
+        return shuffled_hand
+
+    def run(self):
+        print("Welcome to Scrabble!")
+        current_hand = []
+        while True:
+            current_hand = self.tile_hand(current_hand)
+            print(current_hand)
+            while True:
+                user_word = (input("Now please enter a word or 2 to shuffle!")).upper()
+                if user_word == "2":
+                    current_hand = self.shuffle_hand(current_hand)
+                    break
+                for letter in user_word:
+                    if letter in current_hand:
+                        current_hand.remove(letter)
+                    else:
+                        print(f"You do not have the letter {letter}!")
+                print(current_hand)
+                break
+
+
 
 game = ScrabbleGame()
 # print(game.shuffle_hand(["A", "B", "C", "D", "E", "F", "G"]))
-print(game.tile_hand([]))
+# print(game.tile_hand([]))
+game.run()
