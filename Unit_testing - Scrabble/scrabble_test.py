@@ -42,7 +42,7 @@ class Scrabbletest(unittest.TestCase):
         pool_size = 98
         scrabble.tile_hand([])
         self.assertEqual(pool_size - 7, sum(scrabble.scrabble_pool.values()))
-        pool_size = sum(scrabble.scrabble_pool.values())
+        pool_size = 91
         scrabble.tile_hand(["a", "b", "c", "d", "e"])
         self.assertEqual(pool_size - 2, sum(scrabble.scrabble_pool.values()))
 

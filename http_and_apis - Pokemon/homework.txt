@@ -1,0 +1,14 @@
+Things to research:
+
+HTTP - what it is, how it works, request/response structure
+REST - Representational State Transfer
+
+RESTFUL APIs
+- Representation and data flow
+- Messages
+- Naming resources
+- Statelessness
+- Caching
+
+SOLID OOP Principles
+
